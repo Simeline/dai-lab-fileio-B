@@ -2,6 +2,7 @@ package ch.heig.dai.lab.fileio;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 // mvn clean install --> dans le fichier pom
 // java -jar target/fileioapp-1.0.jar jokes 5
@@ -76,12 +77,11 @@ public class Main {
 
 
                     // Create the output file with the new name
-                    String outputFileName = inputFile.getName() + ".processed";
-                    outputFile = new File(inputFile.getParent(), outputFileName);
+                    outputFile = new File(inputFile.getAbsolutePath() + ".processed");
 
 
                     // Write the result
-                    fileReaderWriter.writeFile(outputFile, content, encoding);
+                    fileReaderWriter.writeFile(outputFile, content, StandardCharsets.UTF_8);
 
 
             } catch (Exception e) {
