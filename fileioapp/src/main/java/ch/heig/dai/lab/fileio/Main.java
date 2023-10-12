@@ -61,7 +61,9 @@ public class Main {
                 // Determine encoding
                 Charset encoding = encodingSelector.getEncoding(inputFile);
 
-                if (encoding != null) {
+                if (encoding == null) {
+                    continue;
+                }
 
 
                     // Read the file
@@ -80,7 +82,7 @@ public class Main {
 
                     // Write the result
                     fileReaderWriter.writeFile(outputFile, content, encoding);
-                }
+
 
             } catch (Exception e) {
                 System.out.println("Exception: " + e);
